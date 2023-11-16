@@ -1,0 +1,141 @@
+* {
+  font-family: "Inter", sans-serif !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #E7F6FF !important;
+}
+body .wrapper {
+  background: #FFFFFF;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 50px auto;
+}
+body .wrapper header {
+  border-bottom: 1px solid #eaeaea;
+}
+body .wrapper header .headerRight span {
+  font-weight: 600;
+}
+body .wrapper .content {
+  padding: 60px;
+}
+body .wrapper .content .search-block {
+  border-radius: 10px;
+}
+body .wrapper .content .search-block span {
+  color: #C4C4C4;
+}
+body .wrapper .content .search-block input {
+  border: 0;
+  outline: 0;
+  width: 200px;
+}
+body .wrapper .content .sneakers {
+  gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+body .wrapper .content .sneakers .itemCard {
+  border: 1px solid #f3f3f3;
+  width: 210px;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+}
+body .wrapper .content .sneakers .itemCard:hover {
+  box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+  transform: translateY(-5px);
+}
+body .wrapper .content .sneakers .itemCard .nameOfItem {
+  font-size: 14px;
+}
+body .wrapper .content .sneakers .itemCard .hearthBtn {
+  cursor: pointer;
+}
+body .wrapper .content .sneakers .itemCard span {
+  font-size: 13px;
+  font-weight: 700;
+}
+body .wrapper .content .sneakers .itemCard .button {
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border: 0;
+}
+
+.overlay {
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.overlay .drawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  width: 385px;
+  height: 100%;
+  right: 0;
+  background: #ffffff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+}
+.overlay .drawer .items {
+  flex: 1;
+}
+.overlay .drawer .orderBlock {
+  width: 325px;
+}
+.overlay .drawer .buyIt {
+  width: 325px;
+  height: 55px;
+  background-color: #9DD558;
+  transition: all 0.2s ease;
+  border: 0;
+  border-radius: 18px;
+  color: #fff;
+}
+.overlay .drawer .buyIt:hover {
+  background-color: #82c431;
+}
+.overlay .drawer .buyIt img {
+  right: 2rem;
+}
+.overlay .drawer .buyIt span {
+  font-weight: 600;
+}
+.overlay .drawer .drawerCartBlock div {
+  flex: 1;
+  height: 10px;
+  border-bottom: 1px dashed #dfdfdf;
+  margin: 0 7px;
+}
+.overlay .drawer .item {
+  border-radius: 20px;
+  max-width: 325px;
+  max-height: 120px;
+}
+.overlay .drawer .item .itemText {
+  max-width: 150px;
+}
+.overlay .drawer .item .itemText b {
+  font-size: 14px;
+}
+.overlay .drawer .item .removeBtn {
+  right: 1.3rem;
+  top: 4.3rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+.overlay .drawer .item .removeBtn:hover {
+  opacity: 1;
+}
+.overlay .drawer .item p {
+  font-size: 14px;
+}/*# sourceMappingURL=index.css.map */
