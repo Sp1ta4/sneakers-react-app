@@ -1,30 +1,39 @@
-function Card() {
+import styles from './Card.module.sass';
+import {MouseEventHandler} from 'react';
+interface SneakersProps {
+  name: string;
+  price: number;
+  image: string;
+  onClickAddBtn: MouseEventHandler;
+}
+function Card({name, price, image, onClickAddBtn}: SneakersProps) {
   return (
     <>
-      <div className="itemCard pt-3 ps-4 pe-4 pb-4 d">
+      <div className={`${styles.itemCard} pt-3 ps-4 pe-4 pb-4`}>
         <img
           src="/img/hearth.svg"
           alt="hearth"
-          className="position-absolute hearthBtn"
+          className={`${styles.hearthBtn} position-absolute `}
           width={32}
           height={32}
         />
         <img
-          src="/img/sneakers/sneakers-1.jpg"
+          src={image}
           alt="sneakers"
           width={133}
           height={112}
           className="mb-3"
         />
-        <p className="nameOfItem fw-normal">
-          Мужские Кроссовки Nike Air Max 270
-        </p>
+        <p className={`${styles.nameOfItem} fw-normal`}>{name}</p>
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex flex-column">
             <span className="text-muted text-uppercase">Цена:</span>
-            <b>12 999 руб.</b>
+            <b>{price} руб.</b>
           </div>
-          <button className="button d-flex justify-content-center align-items-center">
+          <button
+            className={`${styles.button} d-flex justify-content-center align-items-center`}
+            onClick={onClickAddBtn}
+          >
             <img
               src="/img/plusBtn.svg"
               width={32}
