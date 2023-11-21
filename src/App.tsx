@@ -48,7 +48,7 @@ function App() {
               name={obj.title}
               price={obj.price}
               image={obj.image}
-              onClickAddBtn={() => console.log(obj)}
+              onClickFavorite={() => console.log('you add favorite')}
             />
           ))}
         </div>

@@ -1,12 +1,17 @@
 import styles from './Card.module.sass';
-import {MouseEventHandler} from 'react';
+import {MouseEventHandler, useState} from 'react';
 interface SneakersProps {
   name: string;
   price: number;
   image: string;
-  onClickAddBtn: MouseEventHandler;
+  onClickFavorite: MouseEventHandler;
 }
-function Card({name, price, image, onClickAddBtn}: SneakersProps) {
+
+function Card({name, price, image, onClickFavorite}: SneakersProps) {
+  const [isChecked, setIsChecked] = useState(false);
+  const onClickAddBsk = () => {
+    setIsChecked(!isChecked);
+  };
   return (
     <>
       <div className={`${styles.itemCard} pt-3 ps-4 pe-4 pb-4`}>
@@ -16,6 +21,7 @@ function Card({name, price, image, onClickAddBtn}: SneakersProps) {
           className={`${styles.hearthBtn} position-absolute `}
           width={32}
           height={32}
+          onClick={onClickFavorite}
         />
         <img
           src={image}
@@ -32,10 +38,10 @@ function Card({name, price, image, onClickAddBtn}: SneakersProps) {
           </div>
           <button
             className={`${styles.button} d-flex justify-content-center align-items-center`}
-            onClick={onClickAddBtn}
+            onClick={onClickAddBsk}
           >
             <img
-              src="/img/plusBtn.svg"
+              src={isChecked ? '/img/btnChecked.svg' : '/img/plusBtn.svg'}
               width={32}
               height={32}
               alt="plus icon"
