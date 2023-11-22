@@ -1,15 +1,18 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 function App() {
   const [isCartOpened, setIsCartOpened] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   const [items, setItems] = useState([]);
 
-  fetch('https://655e4bc49f1e1093c59addc4.mockapi.io/items')
-    .then(data => data.json())
-    .then(data => setItems(data));
+  useEffect(() => {
+    fetch('https://655e4bc49f1e1093c59addc4.mockapi.io/items')
+      .then(data => data.json())
+      .then(data => setItems(data));
+  }, []);
 
   return (
     <div className="wrapper">
@@ -19,11 +22,13 @@ function App() {
             setIsCartOpened(false);
             document.body.style.overflow = 'auto';
           }}
+          itemsArray={cartItems}
         />
       )}
       <Header
         onCartOpen={() => {
           setIsCartOpened(true);
+
           document.body.style.overflow = 'hidden';
         }}
       />
@@ -40,11 +45,17 @@ function App() {
           </div>
         </div>
         <div className="sneakers d-grid">
-          {
-            items /* {items.map(obj => (
-            <Card name={obj.title} price={obj.price} image={obj.image} />
-          ))} */
-          }
+          {items.map((obj: {price: number; title: string; image: string}) => (
+            <Card
+              name={obj.title}
+              price={obj.price}
+              image={obj.image}
+              renderCart={() => {
+                const arr: any = [...cartItems, obj];
+                setCartItems(arr);
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>

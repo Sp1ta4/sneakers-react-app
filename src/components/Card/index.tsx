@@ -1,15 +1,18 @@
+import {type} from 'os';
 import styles from './Card.module.sass';
 import {MouseEventHandler, useState} from 'react';
 interface SneakersProps {
   name: string;
   price: number;
   image: string;
+  renderCart: Function;
 }
 
-function Card({name, price, image}: SneakersProps) {
+function Card({name, price, image, renderCart}: SneakersProps) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const onClickAddBsk = () => {
+    renderCart();
     setIsAdded(!isAdded);
   };
   const onClickFavorite = () => {
