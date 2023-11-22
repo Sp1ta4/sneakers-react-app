@@ -1,4 +1,9 @@
-function Header() {
+import {MouseEventHandler} from 'react';
+
+interface HeaderProps {
+  onCartOpen: MouseEventHandler;
+}
+function Header({onCartOpen}: HeaderProps) {
   return (
     <header className="d-flex justify-content-between align-items-center p-5">
       <div className="headerLeft d-flex align-items-center">
@@ -17,7 +22,7 @@ function Header() {
         </div>
       </div>
       <ul className="headerRight d-flex justify-content-between align-items-center">
-        <li className="list-group-item me-4">
+        <li className="list-group-item me-4 btn" onClick={onCartOpen}>
           <img
             width={18}
             height={18}

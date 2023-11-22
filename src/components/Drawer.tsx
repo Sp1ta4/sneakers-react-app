@@ -1,8 +1,23 @@
-function Drawer() {
+import {MouseEventHandler} from 'react';
+interface DrawerProps {
+  onClose: MouseEventHandler;
+}
+
+function Drawer({onClose}: DrawerProps) {
   return (
-    <div className="overlay position-absolute d-none">
+    <div className="overlay position-absolute">
       <div className="drawer p-4">
-        <h4 className="fw-bold mb-4 mt-2">Корзина</h4>
+        <div
+          className="label mb-4 mt-2 d-flex justify-content-between align-items-center"
+          onClick={onClose}
+        >
+          <h4 className="fw-bold ">Корзина</h4>
+          <img
+            src="/img/deleteBtn.svg"
+            alt="delete"
+            className="removeBtn closeBtn"
+          />
+        </div>
         <div className="items">
           <div className="cartItem mb-4">
             <div className="item d-flex align-items-center border p-4  position-relative">

@@ -1,5 +1,21 @@
 * {
   font-family: "Inter", sans-serif !important;
+  scrollbar-width: none;
+  scrollbar-color: #8ed6ff #d0eeff;
+}
+* ::-webkit-scrollbar {
+  width: 8px;
+}
+* ::-webkit-scrollbar-track {
+  background: none;
+}
+* ::-webkit-scrollbar-thumb {
+  background-color: #8ed6ff;
+  border-radius: 5px;
+  border: 0px none #ffffff;
+}
+* ::-webkit-scrollbar-thumb:hover {
+  background-color: #51c0ff;
 }
 
 body {
@@ -59,6 +75,22 @@ body .wrapper .content .sneakers {
   background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
 }
+.overlay .drawer .removeBtn {
+  right: 1.3rem;
+  top: 4.3rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+.overlay .drawer .removeBtn:hover {
+  opacity: 1;
+}
+.overlay .drawer .closeBtn {
+  opacity: 1 !important;
+}
+.overlay .drawer .closeBtn:hover {
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.06);
+}
 .overlay .drawer .items {
   flex: 1;
 }
@@ -99,16 +131,6 @@ body .wrapper .content .sneakers {
 }
 .overlay .drawer .item .itemText b {
   font-size: 14px;
-}
-.overlay .drawer .item .removeBtn {
-  right: 1.3rem;
-  top: 4.3rem;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: all 0.2s ease;
-}
-.overlay .drawer .item .removeBtn:hover {
-  opacity: 1;
 }
 .overlay .drawer .item p {
   font-size: 14px;

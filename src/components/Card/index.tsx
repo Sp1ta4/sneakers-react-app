@@ -4,19 +4,22 @@ interface SneakersProps {
   name: string;
   price: number;
   image: string;
-  onClickFavorite: MouseEventHandler;
 }
 
-function Card({name, price, image, onClickFavorite}: SneakersProps) {
-  const [isChecked, setIsChecked] = useState(false);
+function Card({name, price, image}: SneakersProps) {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
   const onClickAddBsk = () => {
-    setIsChecked(!isChecked);
+    setIsAdded(!isAdded);
+  };
+  const onClickFavorite = () => {
+    setIsFavorite(!isFavorite);
   };
   return (
     <>
       <div className={`${styles.itemCard} pt-3 ps-4 pe-4 pb-4`}>
         <img
-          src="/img/hearth.svg"
+          src={isFavorite ? '/img/hearthActive.svg' : '/img/hearth.svg'}
           alt="hearth"
           className={`${styles.hearthBtn} position-absolute `}
           width={32}
@@ -41,7 +44,7 @@ function Card({name, price, image, onClickFavorite}: SneakersProps) {
             onClick={onClickAddBsk}
           >
             <img
-              src={isChecked ? '/img/btnChecked.svg' : '/img/plusBtn.svg'}
+              src={isAdded ? '/img/btnChecked.svg' : '/img/plusBtn.svg'}
               width={32}
               height={32}
               alt="plus icon"
