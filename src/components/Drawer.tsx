@@ -3,13 +3,15 @@ import {MouseEventHandler} from 'react';
 interface DrawerProps {
   onClose: MouseEventHandler;
   itemsArray: ObjProps[];
+  onDelete: Function;
 }
 type ObjProps = {
   title: string;
   price: number;
   image: string;
 };
-function Drawer({onClose, itemsArray}: DrawerProps) {
+
+function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
   return (
     <div className="overlay position-absolute">
       <div className="drawer p-4">
@@ -26,32 +28,31 @@ function Drawer({onClose, itemsArray}: DrawerProps) {
         </div>
         <div className="items">
           <>
-            {itemsArray.map(
-              (obj: {price: number; title: string; image: string}) => {
-                return (
-                  <div className="cartItem mb-4">
-                    <div className="item d-flex align-items-center border p-4  position-relative">
-                      <img
-                        src={obj.image}
-                        alt="sneakers"
-                        width={75}
-                        height={65}
-                        className="mb-3"
-                      />
-                      <div className="ms-4 itemText">
-                        <p className="mb-0">{obj.title}</p>
-                        <b>{obj.price} руб.</b>
-                      </div>
-                      <img
-                        src="/img/deleteBtn.svg"
-                        alt="delete"
-                        className="removeBtn position-absolute"
-                      />
+            {itemsArray.map((obj: ObjProps, index) => {
+              return (
+                <div className="cartItem mb-4" key={index}>
+                  <div className="item d-flex align-items-center border p-4  position-relative">
+                    <img
+                      src={obj.image}
+                      alt="sneakers"
+                      width={75}
+                      height={65}
+                      className="mb-3"
+                    />
+                    <div className="ms-4 itemText">
+                      <p className="mb-0">{obj.title}</p>
+                      <b>{obj.price} руб.</b>
                     </div>
+                    <img
+                      src="/img/deleteBtn.svg"
+                      alt="delete"
+                      className="removeBtn position-absolute"
+                      onClick={() => onDelete(obj)}
+                    />
                   </div>
-                );
-              },
-            )}
+                </div>
+              );
+            })}
           </>
         </div>
         <div className="orderBlock mb-3">
