@@ -9,6 +9,7 @@ type ObjProps = {
   title: string;
   price: number;
   image: string;
+  id: string;
 };
 
 function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
@@ -30,7 +31,7 @@ function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
           <>
             {itemsArray.map((obj: ObjProps, index) => {
               return (
-                <div className="cartItem mb-4" key={index}>
+                <div className="cartItem mb-4" key={index + 100}>
                   <div className="item d-flex align-items-center border p-4  position-relative">
                     <img
                       src={obj.image}
@@ -47,7 +48,7 @@ function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
                       src="/img/deleteBtn.svg"
                       alt="delete"
                       className="removeBtn position-absolute"
-                      onClick={() => onDelete(obj)}
+                      onClick={() => onDelete(obj.id)}
                     />
                   </div>
                 </div>

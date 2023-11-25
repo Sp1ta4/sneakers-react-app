@@ -1,12 +1,14 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
+import axios from 'axios';
 import {useEffect, useState} from 'react';
 
 type ObjProps = {
   title: string;
   price: number;
   image: string;
+  id: string;
 };
 function App() {
   const [isCartOpened, setIsCartOpened] = useState(false);
@@ -14,9 +16,12 @@ function App() {
   const [items, setItems] = useState([]);
   const [searchValue, setSearchValue] = useState<string>('');
   useEffect(() => {
-    fetch('https://655e4bc49f1e1093c59addc4.mockapi.io/items')
-      .then(data => data.json())
-      .then(data => setItems(data));
+    axios
+      .get('https://655e4bc49f1e1093c59addc4.mockapi.io/items')
+      .then(res => setItems(res.data));
+    axios
+      .get('https://655e4bc49f1e1093c59addc4.mockapi.io/cart')
+      .then(res => setCartItems(res.data));
   }, []);
 
   return (
@@ -28,12 +33,11 @@ function App() {
             document.body.style.overflow = 'auto';
           }}
           itemsArray={cartItems}
-          onDelete={(obj: ObjProps) => {
-            setCartItems(
-              cartItems.filter(
-                item => JSON.stringify(obj) !== JSON.stringify(item),
-              ),
-            );
+          onDelete={async (id: string) => {
+            await axios
+              .delete(`https://655e4bc49f1e1093c59addc4.mockapi.io/cart/${id}`)
+              .catch(err => console.error(err));
+            setCartItems(prev => prev.filter(item => item.id !== id));
           }}
         />
       )}
@@ -81,20 +85,25 @@ function App() {
             .filter((item: ObjProps) =>
               item.title.toLowerCase().includes(searchValue.toLowerCase()),
             )
-            .map((obj: ObjProps, index) => (
+            .map((obj: ObjProps) => (
               <Card
-                key={index}
+                key={obj.id}
                 name={obj.title}
                 price={obj.price}
                 image={obj.image}
                 renderCart={(isAdded: boolean): void => {
                   if (!isAdded) {
+                    axios.post(
+                      'https://655e4bc49f1e1093c59addc4.mockapi.io/cart',
+                      obj,
+                    );
                     setCartItems([...cartItems, obj]);
                   } else {
-                    setCartItems(
-                      cartItems.filter(
-                        item => JSON.stringify(obj) !== JSON.stringify(item),
-                      ),
+                    axios.delete(
+                      `https://655e4bc49f1e1093c59addc4.mockapi.io/cart/${obj.id}`,
+                    );
+                    setCartItems(prev =>
+                      prev.filter(item => item.id !== obj.id),
                     );
                   }
                 }}
