@@ -28,38 +28,90 @@ body .wrapper {
   background: #FFFFFF;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
-  max-width: 1080px;
-  margin: 50px auto;
+  width: 1080px;
+  margin-top: 8vh;
 }
-body .wrapper header {
-  border-bottom: 1px solid #eaeaea;
+@media screen and (max-width: 1200px) {
+  body .wrapper {
+    width: 880px;
+  }
 }
-body .wrapper header .headerRight span {
-  font-weight: 600;
+@media screen and (max-width: 938px) {
+  body .wrapper {
+    width: 780px;
+  }
+}
+@media screen and (max-width: 767px) {
+  body .wrapper {
+    width: 580px;
+  }
 }
 body .wrapper .content {
   padding: 60px;
 }
-body .wrapper .content .search-block {
+@media screen and (max-width: 767px) {
+  body .wrapper .content {
+    padding: 50px;
+  }
+}
+@media screen and (max-width: 767px) {
+  body .wrapper .content .content-header {
+    flex-direction: column;
+  }
+  body .wrapper .content .content-header h1 {
+    font-size: 3rem !important;
+    margin-bottom: 5vh !important;
+  }
+  body .wrapper .content .content-header .search-block {
+    min-width: 100% !important;
+  }
+}
+body .wrapper .content .content-header .search-block {
   border-radius: 10px;
 }
-body .wrapper .content .search-block span {
+body .wrapper .content .content-header .search-block span {
   color: #C4C4C4;
 }
-body .wrapper .content .search-block input {
+body .wrapper .content .content-header .search-block input {
   border: 0;
   outline: 0;
   width: 200px;
 }
-body .wrapper .content .search-block .btnDel {
+@media screen and (max-width: 767px) {
+  body .wrapper .content .content-header .search-block input {
+    min-width: 420px;
+  }
+}
+body .wrapper .content .content-header .search-block .btnDel {
   cursor: pointer;
+  left: 220px;
+}
+@media screen and (max-width: 767px) {
+  body .wrapper .content .content-header .search-block .btnDel {
+    left: 448px;
+  }
 }
 body .wrapper .content .sneakers {
   gap: 40px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
-.overlay {
+@media screen and (max-width: 1200px) {
+  body .wrapper .content .sneakers {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (max-width: 938px) {
+  body .wrapper .content .sneakers {
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  body .wrapper .content .sneakers {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+body .overlay {
   left: 0;
   top: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -67,7 +119,7 @@ body .wrapper .content .sneakers {
   height: 100%;
   z-index: 1;
 }
-.overlay .drawer {
+body .drawer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -78,31 +130,31 @@ body .wrapper .content .sneakers {
   background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
 }
-.overlay .drawer .removeBtn {
+body .drawer .removeBtn {
   right: 1.3rem;
   top: 4.3rem;
   cursor: pointer;
   opacity: 0.5;
   transition: all 0.2s ease;
 }
-.overlay .drawer .removeBtn:hover {
+body .drawer .removeBtn:hover {
   opacity: 1;
 }
-.overlay .drawer .closeBtn {
+body .drawer .closeBtn {
   opacity: 1 !important;
 }
-.overlay .drawer .closeBtn:hover {
+body .drawer .closeBtn:hover {
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.06);
 }
-.overlay .drawer .items {
+body .drawer .items {
   flex: 1;
   overflow: auto;
   max-height: 70vh;
 }
-.overlay .drawer .orderBlock {
+body .drawer .orderBlock {
   width: 325px;
 }
-.overlay .drawer .buyIt {
+body .drawer .buyIt {
   width: 325px;
   height: 55px;
   background-color: #9DD558;
@@ -111,32 +163,32 @@ body .wrapper .content .sneakers {
   border-radius: 18px;
   color: #fff;
 }
-.overlay .drawer .buyIt:hover {
+body .drawer .buyIt:hover {
   background-color: #82c431;
 }
-.overlay .drawer .buyIt img {
+body .drawer .buyIt img {
   right: 2rem;
 }
-.overlay .drawer .buyIt span {
+body .drawer .buyIt span {
   font-weight: 600;
 }
-.overlay .drawer .drawerCartBlock div {
+body .drawer .drawerCartBlock div {
   flex: 1;
   height: 10px;
   border-bottom: 1px dashed #dfdfdf;
   margin: 0 7px;
 }
-.overlay .drawer .item {
+body .drawer .item {
   border-radius: 20px;
   max-width: 325px;
   max-height: 120px;
 }
-.overlay .drawer .item .itemText {
+body .drawer .item .itemText {
   max-width: 150px;
 }
-.overlay .drawer .item .itemText b {
+body .drawer .item .itemText b {
   font-size: 14px;
 }
-.overlay .drawer .item p {
+body .drawer .item p {
   font-size: 14px;
 }/*# sourceMappingURL=index.css.map */
