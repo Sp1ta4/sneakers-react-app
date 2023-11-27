@@ -1,49 +1,60 @@
-function Drawer() {
+import {MouseEventHandler} from 'react';
+
+interface DrawerProps {
+  onClose: MouseEventHandler;
+  itemsArray: ObjProps[];
+  onDelete: Function;
+}
+type ObjProps = {
+  title: string;
+  price: number;
+  image: string;
+  id: string;
+};
+
+function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
   return (
-    <div className="overlay position-absolute d-none">
+    <div className="overlay position-absolute">
       <div className="drawer p-4">
-        <h4 className="fw-bold mb-4 mt-2">Корзина</h4>
+        <div
+          className="label mb-4 mt-2 d-flex justify-content-between align-items-center"
+          onClick={onClose}
+        >
+          <h4 className="fw-bold ">Корзина</h4>
+          <img
+            src="/img/deleteBtn.svg"
+            alt="delete"
+            className="removeBtn closeBtn"
+          />
+        </div>
         <div className="items">
-          <div className="cartItem mb-4">
-            <div className="item d-flex align-items-center border p-4  position-relative">
-              <img
-                src="/img/sneakers/sneakers-1.jpg"
-                alt="sneakers"
-                width={75}
-                height={65}
-                className="mb-3"
-              />
-              <div className="ms-4 itemText">
-                <p className="mb-0">Мужские Кроссовки Nike Air Max 270</p>
-                <b>12 999 руб.</b>
-              </div>
-              <img
-                src="/img/deleteBtn.svg"
-                alt="delete"
-                className="removeBtn position-absolute"
-              />
-            </div>
-          </div>
-          <div className="cartItem mb-4">
-            <div className="item d-flex align-items-center border p-4  position-relative">
-              <img
-                src="/img/sneakers/sneakers-4.jpg"
-                alt="sneakers"
-                width={75}
-                height={65}
-                className="mb-3"
-              />
-              <div className="ms-4 itemText">
-                <p className="mb-0">Кроссовки Puma X Aka Boku Future Rider</p>
-                <b>8 999 руб.</b>
-              </div>
-              <img
-                src="/img/deleteBtn.svg"
-                alt="delete"
-                className="removeBtn position-absolute"
-              />
-            </div>
-          </div>
+          <>
+            {itemsArray.map((obj: ObjProps, index) => {
+              return (
+                <div className="cartItem mb-4" key={index + 100}>
+                  <div className="item d-flex align-items-center border p-4  position-relative">
+                    <img
+                      src={obj.image}
+                      alt="sneakers"
+                      width={75}
+                      height={65}
+                      className="mb-3"
+                    />
+                    <div className="ms-4 itemText">
+                      <p className="mb-0">{obj.title}</p>
+                      <b>{obj.price} руб.</b>
+                    </div>
+                    <img
+                      src="/img/deleteBtn.svg"
+                      alt="delete"
+                      className="removeBtn position-absolute"
+                      onClick={() => onDelete(obj.id)}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </>
         </div>
         <div className="orderBlock mb-3">
           <ul className="drawerCartBlock p-0">

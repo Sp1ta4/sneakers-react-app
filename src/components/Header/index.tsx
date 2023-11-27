@@ -1,7 +1,15 @@
-function Header() {
+import styles from './Header.module.sass';
+import {MouseEventHandler, useState} from 'react';
+
+interface HeaderProps {
+  onCartOpen: MouseEventHandler;
+}
+
+function Header({onCartOpen}: HeaderProps) {
+  // const [cartPrice, setCartPrice] = useState(0);
   return (
     <header className="d-flex justify-content-between align-items-center p-5">
-      <div className="headerLeft d-flex align-items-center">
+      <div className={`${styles.headerLeft} d-flex align-items-center`}>
         <img
           width={40}
           height={40}
@@ -16,8 +24,10 @@ function Header() {
           </p>
         </div>
       </div>
-      <ul className="headerRight d-flex justify-content-between align-items-center">
-        <li className="list-group-item me-4">
+      <ul
+        className={`${styles.headerRight} d-flex justify-content-between align-items-center`}
+      >
+        <li className="list-group-item me-4 btn" onClick={onCartOpen}>
           <img
             width={18}
             height={18}

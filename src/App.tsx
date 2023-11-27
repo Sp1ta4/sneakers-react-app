@@ -24,7 +24,7 @@ const infoArray = [
     image: '/img/sneakers/sneakers-4.jpg',
   },
 ];
-const arr = [];
+
 function App() {
   return (
     <div className="wrapper">
