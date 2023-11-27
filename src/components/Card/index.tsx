@@ -4,14 +4,12 @@ interface SneakersProps {
   name: string;
   price: number;
   image: string;
-  renderCart: Function;
 }
 
-function Card({name, price, image, renderCart}: SneakersProps) {
+function Card({name, price, image}: SneakersProps) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const onClickAddBsk = () => {
-    renderCart(isAdded);
     setIsAdded(!isAdded);
   };
   const onClickFavorite = () => {

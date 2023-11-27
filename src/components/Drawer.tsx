@@ -1,16 +1,10 @@
 import {MouseEventHandler} from 'react';
-
+import {ObjProps} from '../ObjProps';
 interface DrawerProps {
   onClose: MouseEventHandler;
   itemsArray: ObjProps[];
   onDelete: Function;
 }
-type ObjProps = {
-  title: string;
-  price: number;
-  image: string;
-  id: string;
-};
 
 function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
   return (
@@ -29,9 +23,9 @@ function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
         </div>
         <div className="items">
           <>
-            {itemsArray.map((obj: ObjProps, index) => {
+            {itemsArray.map((obj: ObjProps) => {
               return (
-                <div className="cartItem mb-4" key={index + 100}>
+                <div className="cartItem mb-4" key={obj.id}>
                   <div className="item d-flex align-items-center border p-4  position-relative">
                     <img
                       src={obj.image}

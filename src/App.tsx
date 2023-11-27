@@ -1,7 +1,8 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
-
+import {useState} from 'react';
+import {ObjProps} from './ObjProps';
 const infoArray = [
   {
     title: 'Мужские Кроссовки Nike Blazer Mid Suede',
@@ -24,12 +25,44 @@ const infoArray = [
     image: '/img/sneakers/sneakers-4.jpg',
   },
 ];
+const cartItems: ObjProps[] = [
+  {
+    title: 'Мужские Кроссовки Nike Air Max 270',
+    price: 12999,
+    image: '/img/sneakers/sneakers-1.jpg',
+    id: '1',
+  },
+  {
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
+    price: 8499,
+    image: '/img/sneakers/sneakers-2.jpg',
+    id: '3',
+  },
+];
 
 function App() {
+  const [isCartOpened, setIsCartOpened] = useState(false);
+  const onDelete = () => {
+    console.log('deleted');
+  };
   return (
     <div className="wrapper">
-      <Drawer />
-      <Header />
+      {isCartOpened && (
+        <Drawer
+          onClose={() => {
+            setIsCartOpened(false);
+            document.body.style.overflow = 'auto';
+          }}
+          itemsArray={cartItems}
+          onDelete={onDelete}
+        />
+      )}
+      <Header
+        onCartOpen={() => {
+          setIsCartOpened(true);
+          document.body.style.overflow = 'hidden';
+        }}
+      />
       <div className="content">
         <div className="d-flex justify-content-between align-items-center  mb-5">
           <h1 className="m-0 fs-2 fw-bold">Все кроссовки</h1>
@@ -44,12 +77,7 @@ function App() {
         </div>
         <div className="sneakers d-grid">
           {infoArray.map(obj => (
-            <Card
-              name={obj.title}
-              price={obj.price}
-              image={obj.image}
-              onClickFavorite={() => console.log('you add favorite')}
-            />
+            <Card name={obj.title} price={obj.price} image={obj.image} />
           ))}
         </div>
       </div>
