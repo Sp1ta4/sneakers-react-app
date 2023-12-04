@@ -80,18 +80,9 @@ const itemsArray = [
 
 function App() {
   const [isCartOpened, setIsCartOpened] = useState(false);
-  const [cartItems, setCartItems] = useState<ObjProps[]>([]);
-  const onDelete = (id: string) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
-  const renderCartItems = (isAdded: boolean, obj: ObjProps) => {
-    if (!isAdded) {
-      setCartItems([...cartItems, obj]);
-    } else {
-      setCartItems(cartItems.filter(item => item.id !== obj.id));
-    }
-    console.log(cartItems);
-  };
+  // const onDelete = (id: string) => {
+  //   setCartItems(cartItems.filter(item => item.id !== id));
+  // };
   const [searchValue, setSearchValue] = useState<string>('');
   return (
     <div className="wrapper">
@@ -101,8 +92,6 @@ function App() {
             setIsCartOpened(false);
             document.body.style.overflow = 'auto';
           }}
-          itemsArray={cartItems}
-          onDelete={onDelete}
         />
       )}
       <Header
@@ -147,7 +136,7 @@ function App() {
               item.title.toLowerCase().includes(searchValue.toLowerCase()),
             )
             .map(obj => (
-              <Card key={obj.id} item={obj} renderCartItems={renderCartItems} />
+              <Card key={obj.id} item={obj} />
             ))}
         </div>
       </div>

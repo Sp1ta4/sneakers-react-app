@@ -1,13 +1,20 @@
-import {MouseEventHandler} from 'react';
-import {ObjProps} from '../ObjProps';
+import {MouseEventHandler, useEffect, useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../hook';
+import {deleteItem} from '../store/cartSlice';
+
 interface DrawerProps {
   onClose: MouseEventHandler;
-  itemsArray: ObjProps[];
-  onDelete: Function;
 }
 
-function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
+function Drawer({onClose}: DrawerProps) {
   let price: number = 0;
+  const dispatch = useAppDispatch();
+
+  const cartData = useAppSelector(state => state.cartReducer);
+  const [cartItems, setCartItems] = useState(cartData);
+  useEffect(() => {
+    setCartItems(cartData);
+  }, [cartData]);
   return (
     <div className="overlay position-absolute">
       <div className="drawer p-4">
@@ -24,14 +31,14 @@ function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
         </div>
         <div
           className={
-            (!itemsArray.length &&
+            (!cartItems.length &&
               'd-flex flex-column justify-content-center align-items-between') ||
             'items'
           }
         >
           <>
-            {itemsArray.length ? (
-              itemsArray.map((obj: ObjProps) => {
+            {cartItems.length ? (
+              cartItems.map(obj => {
                 price += obj.price;
                 return (
                   <div className="cartItem mb-4" key={obj.id}>
@@ -51,7 +58,7 @@ function Drawer({onClose, itemsArray, onDelete}: DrawerProps) {
                         src="/img/deleteBtn.svg"
                         alt="delete"
                         className="removeBtn position-absolute"
-                        onClick={() => onDelete(obj.id)}
+                        onClick={() => dispatch(deleteItem(obj))}
                       />
                     </div>
                   </div>
