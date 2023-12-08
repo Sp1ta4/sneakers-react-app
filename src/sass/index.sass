@@ -6,7 +6,6 @@ $breakpoint_xl: 1024px
 $breakpoint_lg: 938px
 $breakpoint_md: 767px
 $breakpoint_sm: 576px
-
 * 
   font-family: 'Inter', sans-serif !important
   scrollbar-width: none
@@ -76,69 +75,4 @@ body
           grid-template-columns: 1fr 1fr
           gap: 3rem
        
-  .overlay
-    left: 0
-    top: 0
-    background: rgb(0, 0, 0, 0.6)
-    width: 100%
-    height: 100%
-    z-index: 1
-  .drawer 
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    position: absolute
-    width: 385px
-    height: 100%       
-    right: 0
-    background: #ffffff
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1)
-    .removeBtn
-      right: 1.3rem
-      top: 4.3rem
-      cursor: pointer
-      opacity: 0.5 
-      transition: $trans
-      &:hover
-        opacity: 1
-    .closeBtn
-      opacity: 1 !important
-      &:hover
-        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.06)
-    .items 
-      flex: 1
-      overflow: auto 
-      max-height: 70vh     
-      
-    .orderBlock
-      width: 325px
-    .buyIt
-      width: 325px
-      height: 55px
-      background-color: #9DD558
-      transition: $trans
-      &:hover
-        background-color: darken(#9DD558, 11% )
-      border: 0
-      border-radius: 18px
-      color: #fff
-      img
-        right:2rem
-      span
-        font-weight: 600
-    .drawerCartBlock
-      div
-        flex: 1
-        height: 10px
-        border-bottom: 1px dashed #dfdfdf
-        margin: 0 7px
-    .item
-      border-radius: 20px
-      max-width: 325px
-      max-height: 120px
-      .itemText
-        max-width: 150px
-        b
-          font-size: 14px
-      p
-        font-size: 14px
+  

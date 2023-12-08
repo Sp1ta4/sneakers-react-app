@@ -1,6 +1,7 @@
 import {ObjProps} from '../../ObjProps';
 import {useAppDispatch, useAppSelector} from '../../hook';
 import {addCart, deleteItem} from '../../store/cartSlice';
+import {addFavorites, deleteFavoriteItem} from '../../store/favoriteSlice';
 import styles from './Card.module.sass';
 import {useEffect, useState} from 'react';
 
@@ -9,22 +10,41 @@ interface SneakersProps {
 }
 
 function Card({item}: SneakersProps) {
-  const [isAdded, setIsAdded] = useState(false);
   const dispatch = useAppDispatch();
+
+  //all actions with cart
+  const [isAdded, setIsAdded] = useState(false);
   const cartData = useAppSelector(state => state.cartReducer);
   const [cartItems, setCartItems] = useState(cartData);
   useEffect(() => {
     setCartItems(cartData);
   }, [cartData]);
+
+  //all actions with favorites
   const [isFavorite, setIsFavorite] = useState(false);
+  const favoriteData = useAppSelector(state => state.favoriteReducer);
+  const [favoriteItems, setFavoriteItems] = useState(favoriteData);
+  useEffect(() => {
+    setFavoriteItems(favoriteData);
+  }, [favoriteData]);
   const onClickFavorite = () => {
     setIsFavorite(!isFavorite);
+    if (!isFavorite) {
+      dispatch(addFavorites(item));
+    } else {
+      dispatch(deleteFavoriteItem({...item}));
+    }
   };
+
   return (
     <>
       <div className={`${styles.itemCard} pt-3 ps-4 pe-4 pb-4`} key={item.id}>
         <img
-          src={isFavorite ? '/img/hearthActive.svg' : '/img/hearth.svg'}
+          src={
+            favoriteItems.some(favoriteItem => favoriteItem.id === item.id)
+              ? '/img/hearthActive.svg'
+              : '/img/hearth.svg'
+          }
           alt="hearth"
           className={`${styles.hearthBtn} position-absolute `}
           width={32}

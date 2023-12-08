@@ -1,6 +1,7 @@
 import {MouseEventHandler, useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../hook';
-import {deleteItem} from '../store/cartSlice';
+import {useAppDispatch, useAppSelector} from '../../hook';
+import {deleteItem} from '../../store/cartSlice';
+import styles from './Drawer.module.sass';
 
 interface DrawerProps {
   onClose: MouseEventHandler;
@@ -16,24 +17,24 @@ function Drawer({onClose}: DrawerProps) {
     setCartItems(cartData);
   }, [cartData]);
   return (
-    <div className="overlay position-absolute">
-      <div className="drawer p-4">
+    <div className={`${styles.overlay} position-absolute`}>
+      <div className={`${styles.drawer} p-4`}>
         <div
-          className="label mb-4 mt-2 d-flex justify-content-between align-items-center"
+          className={`${styles.label} mb-4 mt-2 d-flex justify-content-between align-items-center`}
           onClick={onClose}
         >
-          <h4 className="fw-bold ">Корзина</h4>
+          <h4 className="fw-bold">Корзина</h4>
           <img
             src="/img/deleteBtn.svg"
             alt="delete"
-            className="removeBtn closeBtn"
+            className={`${styles.removeBtn} ${styles.closeBtn}`}
           />
         </div>
         <div
           className={
             (!cartItems.length &&
               'd-flex flex-column justify-content-center align-items-between') ||
-            'items'
+            `${styles.items}`
           }
         >
           <>
@@ -41,8 +42,10 @@ function Drawer({onClose}: DrawerProps) {
               cartItems.map(obj => {
                 price += obj.price;
                 return (
-                  <div className="cartItem mb-4" key={obj.id}>
-                    <div className="item d-flex align-items-center border p-4  position-relative">
+                  <div className={`${styles.cartItem} mb-4`} key={obj.id}>
+                    <div
+                      className={`${styles.item} d-flex align-items-center border p-4  position-relative`}
+                    >
                       <img
                         src={obj.image}
                         alt="sneakers"
@@ -50,14 +53,14 @@ function Drawer({onClose}: DrawerProps) {
                         height={65}
                         className="mb-3"
                       />
-                      <div className="ms-4 itemText">
+                      <div className={`ms-4 ${styles.itemText}`}>
                         <p className="mb-0">{obj.title}</p>
                         <b>{obj.price} руб.</b>
                       </div>
                       <img
                         src="/img/deleteBtn.svg"
                         alt="delete"
-                        className="removeBtn position-absolute"
+                        className={`${styles.removeBtn} position-absolute`}
                         onClick={() => dispatch(deleteItem(obj))}
                       />
                     </div>
@@ -82,8 +85,8 @@ function Drawer({onClose}: DrawerProps) {
             )}
           </>
         </div>
-        <div className="orderBlock mb-3">
-          <ul className="drawerCartBlock p-0">
+        <div className={`${styles.orderBlock} mb-3`}>
+          <ul className={`${styles.drawerCartBlock} p-0`}>
             <li className="d-flex align-items-center">
               <span>Итого:</span>
               <div></div>
@@ -95,7 +98,9 @@ function Drawer({onClose}: DrawerProps) {
               <b>{`${(price * 5) / 100} руб.`}</b>
             </li>
           </ul>
-          <button className="buyIt d-flex justify-content-center align-items-center position-relative">
+          <button
+            className={`${styles.buyIt} d-flex justify-content-center align-items-center position-relative`}
+          >
             <span className="fs-6">Оформить заказ</span>
             <img
               src="/img/buyGo.svg"

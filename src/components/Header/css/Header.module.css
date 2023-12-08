@@ -1,6 +1,14 @@
 header {
   border-bottom: 1px solid #eaeaea;
 }
+header h3 {
+  color: black !important;
+}
+header .headerRight .active {
+  border-bottom: 3px solid #D0EEFF;
+  transition: 0.1s;
+  border-radius: 3px;
+}
 header .headerRight span {
   font-weight: 600;
 }/*# sourceMappingURL=Header.module.css.map */

@@ -1,0 +1,12 @@
+@media screen and (max-width: 767px) {
+  .contentHeader {
+    flex-direction: column;
+  }
+  .contentHeader h1 {
+    font-size: 3rem !important;
+    margin-bottom: 5vh !important;
+  }
+  .contentHeader .search-block {
+    min-width: 100% !important;
+  }
+}/*# sourceMappingURL=favorites.module.css.map */
