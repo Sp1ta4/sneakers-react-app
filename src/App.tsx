@@ -9,14 +9,13 @@ function App() {
   const [isCartOpened, setIsCartOpened] = useState(false);
   return (
     <div className="wrapper">
-      {isCartOpened && (
-        <Drawer
-          onClose={() => {
-            setIsCartOpened(false);
-            document.body.style.overflow = 'auto';
-          }}
-        />
-      )}
+      <Drawer
+        onClose={() => {
+          setIsCartOpened(false);
+          document.body.style.overflow = 'auto';
+        }}
+        isCartOpened={isCartOpened}
+      />
       <Header
         onCartOpen={() => {
           setIsCartOpened(true);

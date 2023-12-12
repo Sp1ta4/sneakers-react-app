@@ -6,7 +6,9 @@
     font-size: 3rem !important;
     margin-bottom: 5vh !important;
   }
-  .contentHeader .search-block {
-    min-width: 100% !important;
-  }
+}
+
+.emptyFavorite {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
 }/*# sourceMappingURL=favorites.module.css.map */

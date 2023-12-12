@@ -1,10 +1,14 @@
 .overlay {
-  left: 0;
-  top: 0;
+  left: 0%;
+  top: 0%;
   background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
+  overflow: hidden;
 }
 .overlay .drawer {
   display: flex;
@@ -16,6 +20,18 @@
   right: 0;
   background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+.overlay .drawer .overlayLoad {
+  height: 15px;
+  overflow: hidden;
+}
+.overlay .drawer .overlayLoad .loadFill {
+  background-color: #9DD558;
+  width: 100%;
+  transform: translateX(-100%);
+  animation: 3s linear fade;
 }
 .overlay .drawer .removeBtn {
   right: 1.3rem;
@@ -41,17 +57,21 @@
 .overlay .drawer .orderBlock {
   width: 325px;
 }
+.overlay .drawer .buyBtnActive {
+  cursor: pointer !important;
+  background-color: #9DD558;
+  transition: all 0.2s ease;
+}
+.overlay .drawer .buyBtnActive:hover {
+  background-color: #82c431;
+}
 .overlay .drawer .buyIt {
   width: 325px;
   height: 55px;
-  background-color: #9DD558;
-  transition: all 0.2s ease;
+  cursor: auto;
   border: 0;
   border-radius: 18px;
   color: #fff;
-}
-.overlay .drawer .buyIt:hover {
-  background-color: #82c431;
 }
 .overlay .drawer .buyIt img {
   right: 2rem;
@@ -78,4 +98,24 @@
 }
 .overlay .drawer .item p {
   font-size: 14px;
+}
+
+.overlayOpened {
+  visibility: visible;
+  opacity: 1;
+}
+.overlayOpened .drawer {
+  transform: translateX(0);
+}
+
+@keyframes fade {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }/*# sourceMappingURL=Drawer.module.css.map */

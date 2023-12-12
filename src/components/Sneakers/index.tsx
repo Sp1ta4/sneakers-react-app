@@ -12,7 +12,7 @@ const Sneakers = ({searchValue}: {searchValue: string}) => {
           item.title.toLowerCase().includes(searchValue.toLowerCase()),
         )
         .map(obj => (
-          <Card key={obj.id} item={obj} />
+          <Card key={obj.id} item={obj} loading={false} />
         ))}
     </div>
   );
