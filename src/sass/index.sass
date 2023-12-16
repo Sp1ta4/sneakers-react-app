@@ -6,6 +6,8 @@ $breakpoint_xl: 1024px
 $breakpoint_lg: 938px
 $breakpoint_md: 767px
 $breakpoint_sm: 576px
+$breakpoint_sm: 576px
+$breakpoint_min: 480px
 * 
   font-family: 'Inter', sans-serif !important
   scrollbar-width: none
@@ -31,27 +33,46 @@ body
     border-radius: 20px
     width: 1080px
     margin-top: 8vh
+    overflow-x: hidden
     @media screen and (max-width: $breakpoint_xxl)
       width: 880px
     @media screen and (max-width: $breakpoint_lg)
-      width: 780px
+      width: 90%
+      margin-top: 5vh
     @media screen and (max-width: $breakpoint_md)
       width: 580px
+    @media screen and (max-width: $breakpoint_sm)
+      width: 100vw
+      margin-top: 0
+      border-radius: 0
     .content
       padding: 60px
       min-height: 650px !important
-      @media screen and (max-width: $breakpoint_md)
-        padding: 50px
+      @media screen and (max-width: $breakpoint_lg)
+          padding: 50px
+      @media screen and (max-width: $breakpoint_min)
+          padding: 0
       .content-header
         @media screen and (max-width: $breakpoint_md)
           flex-direction: column
           h1
-            font-size: 3rem !important
-            margin-bottom: 5vh !important
+            font-size: 2.5rem !important
+            margin-bottom: 4vh !important
+            @media screen and (max-width: $breakpoint_min)
+              display: none
           .search-block 
-            min-width: 100% !important
+            min-width: 70% !important
+        @media screen and (max-width: $breakpoint-min)
+          margin-bottom: 2vh !important
+          border: 0 !important
         .search-block
           border-radius: 10px
+          @media screen and (max-width: $breakpoint_md)
+            padding: 12px !important
+          @media screen and (max-width: $breakpoint_min)
+            padding: 8px !important
+            min-width: 100% !important
+            border-radius: 0
           span
             color: #C4C4C4
           input
@@ -59,21 +80,38 @@ body
             outline: 0
             width: 200px
             @media screen and (max-width: $breakpoint_md)
-              min-width: 420px
+              min-width: 380px
+            @media screen and (max-width: $breakpoint_sm)
+              min-width: 340px
+            @media screen and (max-width: $breakpoint_min)
+              min-width: 230px
+              
           .btnDel
             cursor: pointer
             left: 220px  
             @media screen and (max-width: $breakpoint_md)
-              left: 448px  
+              left: 380px  
+            @media screen and (max-width: $breakpoint_sm)
+              left: 344px  
+              
       .sneakers
         gap: 40px
         grid-template-columns: 1fr 1fr 1fr 1fr
         @media screen and (max-width: $breakpoint_xxl)
           grid-template-columns: 1fr 1fr 1fr
+          gap: 35px 62px
+        @media screen and (max-width: $breakpoint_xl)
+          gap: 35px 55px
         @media screen and (max-width: $breakpoint_lg)
-          gap: 1rem
+          gap: 35px 15px
         @media screen and (max-width: $breakpoint_md)
           grid-template-columns: 1fr 1fr
           gap: 3rem
+        @media screen and (max-width: $breakpoint_sm)
+          gap: 10px
+        @media screen and (max-width: $breakpoint_min)
+          justify-items: center
+          gap: 5px 0
+       
        
   

@@ -14,7 +14,7 @@ function Header({onCartOpen}: HeaderProps) {
     {price: 0},
   );
   return (
-    <header className="d-flex justify-content-between align-items-center p-5">
+    <header className="d-flex justify-content-between align-items-center">
       <Link to="/" className="link-underline link-underline-opacity-0">
         <div className={`${styles.headerLeft} d-flex align-items-center`}>
           <img
@@ -24,8 +24,8 @@ function Header({onCartOpen}: HeaderProps) {
             alt="logo"
             className="me-4"
           />
-          <div>
-            <h3 className="m-0 text-uppercase storeNameText fw-bold fs-5">
+          <div className="headerMainText">
+            <h3 className="m-0 text-uppercase storeNameText fw-bold">
               React Sneakers
             </h3>
             <p className="m-0 text-muted fs-6 fw-normal">
@@ -77,6 +77,36 @@ function Header({onCartOpen}: HeaderProps) {
           <span className="text-muted fs-6">Профиль</span>
         </li>
       </ul>
+      <div className={`${styles.hamburgerMenu}`}>
+        <input id={`${styles.menuToggle}`} type="checkbox" />
+        <label className={`${styles.menuBtn}`}>
+          <span></span>
+        </label>
+
+        <ul className={`${styles.menuBox}`}>
+          <li>
+            <Link
+              to="/"
+              className={`${styles.menuItem} link-underline link-underline-opacity-0`}
+            >
+              Главная
+            </Link>
+          </li>
+          <li>
+            <span className={`${styles.menuItem}`} onClick={onCartOpen}>
+              Корзина
+            </span>
+          </li>
+          <li>
+            <Link
+              to="/Favorites"
+              className={`${styles.menuItem} link-underline link-underline-opacity-0`}
+            >
+              Избранные
+            </Link>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

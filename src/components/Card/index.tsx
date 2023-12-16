@@ -71,7 +71,7 @@ function Card({item, loading}: SneakersProps) {
             alt="sneakers"
             width={133}
             height={112}
-            className="mb-3"
+            className={`mb-3 ${styles.sneakersImage}`}
           />
           <p className={`${styles.nameOfItem} fw-normal`}>{item.title}</p>
           <div className="d-flex justify-content-between align-items-center">

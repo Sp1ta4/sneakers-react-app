@@ -30,6 +30,7 @@ body .wrapper {
   border-radius: 20px;
   width: 1080px;
   margin-top: 8vh;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 1200px) {
   body .wrapper {
@@ -38,7 +39,8 @@ body .wrapper {
 }
 @media screen and (max-width: 938px) {
   body .wrapper {
-    width: 780px;
+    width: 90%;
+    margin-top: 5vh;
   }
 }
 @media screen and (max-width: 767px) {
@@ -46,13 +48,25 @@ body .wrapper {
     width: 580px;
   }
 }
+@media screen and (max-width: 576px) {
+  body .wrapper {
+    width: 100vw;
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
 body .wrapper .content {
   padding: 60px;
   min-height: 650px !important;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 938px) {
   body .wrapper .content {
     padding: 50px;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .wrapper .content {
+    padding: 0;
   }
 }
 @media screen and (max-width: 767px) {
@@ -60,15 +74,40 @@ body .wrapper .content {
     flex-direction: column;
   }
   body .wrapper .content .content-header h1 {
-    font-size: 3rem !important;
-    margin-bottom: 5vh !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 4vh !important;
   }
+}
+@media screen and (max-width: 767px) and (max-width: 480px) {
+  body .wrapper .content .content-header h1 {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
   body .wrapper .content .content-header .search-block {
-    min-width: 100% !important;
+    min-width: 70% !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .wrapper .content .content-header {
+    margin-bottom: 2vh !important;
+    border: 0 !important;
   }
 }
 body .wrapper .content .content-header .search-block {
   border-radius: 10px;
+}
+@media screen and (max-width: 767px) {
+  body .wrapper .content .content-header .search-block {
+    padding: 12px !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .wrapper .content .content-header .search-block {
+    padding: 8px !important;
+    min-width: 100% !important;
+    border-radius: 0;
+  }
 }
 body .wrapper .content .content-header .search-block span {
   color: #C4C4C4;
@@ -80,7 +119,17 @@ body .wrapper .content .content-header .search-block input {
 }
 @media screen and (max-width: 767px) {
   body .wrapper .content .content-header .search-block input {
-    min-width: 420px;
+    min-width: 380px;
+  }
+}
+@media screen and (max-width: 576px) {
+  body .wrapper .content .content-header .search-block input {
+    min-width: 340px;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .wrapper .content .content-header .search-block input {
+    min-width: 230px;
   }
 }
 body .wrapper .content .content-header .search-block .btnDel {
@@ -89,7 +138,12 @@ body .wrapper .content .content-header .search-block .btnDel {
 }
 @media screen and (max-width: 767px) {
   body .wrapper .content .content-header .search-block .btnDel {
-    left: 448px;
+    left: 380px;
+  }
+}
+@media screen and (max-width: 576px) {
+  body .wrapper .content .content-header .search-block .btnDel {
+    left: 344px;
   }
 }
 body .wrapper .content .sneakers {
@@ -99,16 +153,33 @@ body .wrapper .content .sneakers {
 @media screen and (max-width: 1200px) {
   body .wrapper .content .sneakers {
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 35px 62px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  body .wrapper .content .sneakers {
+    gap: 35px 55px;
   }
 }
 @media screen and (max-width: 938px) {
   body .wrapper .content .sneakers {
-    gap: 1rem;
+    gap: 35px 15px;
   }
 }
 @media screen and (max-width: 767px) {
   body .wrapper .content .sneakers {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  body .wrapper .content .sneakers {
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .wrapper .content .sneakers {
+    justify-items: center;
+    gap: 5px 0;
   }
 }/*# sourceMappingURL=index.css.map */

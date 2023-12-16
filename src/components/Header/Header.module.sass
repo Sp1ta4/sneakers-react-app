@@ -1,11 +1,98 @@
+$breakpoint_xxl: 1200px
+$breakpoint_xl: 1024px
+$breakpoint_lg: 938px
+$breakpoint_md: 767px
+$breakpoint_sm: 576px
+$breakpoint_min: 480px
 header
   border-bottom: 1px solid #eaeaea
-  h3
-    color: black !important
+  padding: 3rem
+  @media screen and (max-width: $breakpoint_xl)
+    padding: 2rem
+  @media screen and (max-width: $breakpoint_min)
+    padding: 1rem
+    border-bottom: 0 !important
+  .hamburgerMenu
+    display: none  
+    margin-right: 2.8rem
+    margin-top: 1.2rem
+    @media screen and (max-width: $breakpoint_xl)
+      display: block
+    #menuToggle
+      opacity: 0
+    #menuToggle:checked + .menuBtn > span
+      transform: rotate(45deg)
+    #menuToggle:checked + .menuBtn > span::before
+      top: 0
+      transform: rotate(0deg)
+    #menuToggle:checked + .menuBtn > span::after
+      top: 0
+      transform: rotate(90deg)
+    #menuToggle:checked ~ .menuBox
+      left: 0 !important
+    .menuBtn
+      position: absolute
+      width: 32px
+      cursor: pointer
+      z-index: 9999
+      margin-right: 100px
+      > span,
+      > span::before,
+      > span::after
+        display: block
+        position: absolute
+        width: 100%
+        height: 3px
+        background-color: darken(#E7F6FF, 15% )
+        transition-duration: .25s
+      > span::before
+        content: ''
+        top: -10px
+      > span::after
+        content: ''
+        top: 10px
+    .menuBox
+      display: block
+      position: fixed
+      top: 0
+      z-index: 9999
+      left: -100%
+      width: 300px
+      height: 100%
+      margin: 0
+      padding: 80px 0
+      list-style: none
+      background-color: darken(#E7F6FF, 10% )
+      box-shadow: 1px 1px 14px rgba(0, 0, 0, .3)
+      transition-duration: .25s
+    .menuItem
+      display: block
+      padding: 12px 24px
+      color: #333
+      font-family: 'Roboto', sans-serif
+      font-size: 20px
+      font-weight: 600
+      text-decoration: none
+      transition-duration: .25s
+      &:hover
+        background-color: #fff
+  .headerLeft
+    h3
+      color: black !important
+      font-size: 1.25rem
+      @media screen and (max-width: $breakpoint_xl)
+        font-size: 1.4rem !important
+    p
+      @media screen and (max-width: $breakpoint_xl)
+        font-size: 0.8rem !important
+        font-weight: 500 !important
   .headerRight
+    @media screen and (max-width: $breakpoint_xl)
+      display: none !important 
     .active
       border-bottom: 3px solid #D0EEFF
       transition: .1s
       border-radius: 3px
     span
       font-weight: 600
+  

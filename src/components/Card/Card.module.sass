@@ -1,10 +1,22 @@
 $trans: all .2s ease
-
+$breakpoint_sm: 576px
+$breakpoint_sm: 576px
+$breakpoint_min: 480px
 .itemCard 
   border: 1px solid #f3f3f3
   width: 210px
   border-radius: 40px
   transition: $trans
+  @media screen and (max-width: $breakpoint_min)
+      width: 185px
+      height: 225.5px
+      p
+        text-overflow: ellipsis !important
+        white-space: nowrap !important
+        overflow: hidden !important
+  .sneakersImage
+    width: 112px
+    height: 91px
   &:hover
     box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06)
     transform: translateY(-5px)
