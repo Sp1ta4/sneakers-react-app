@@ -59,9 +59,9 @@ body .wrapper .content {
   padding: 60px;
   min-height: 650px !important;
 }
-@media screen and (max-width: 938px) {
+@media screen and (max-width: 767px) {
   body .wrapper .content {
-    padding: 50px;
+    min-height: 100vh !important;
   }
 }
 @media screen and (max-width: 480px) {

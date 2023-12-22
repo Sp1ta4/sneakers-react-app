@@ -4,7 +4,7 @@
   background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
-  z-index: 100000;
+  z-index: 100002;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.1s ease-out, visibility 0.1s ease-out;

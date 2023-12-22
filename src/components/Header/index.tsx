@@ -1,13 +1,15 @@
 import {Link, NavLink} from 'react-router-dom';
 import styles from './Header.module.sass';
-import {MouseEventHandler, useState} from 'react';
+import {Dispatch, MouseEventHandler, SetStateAction} from 'react';
 import {useAppSelector} from '../../hook';
-
+import Hamburger from 'hamburger-react';
 interface HeaderProps {
   onCartOpen: MouseEventHandler;
+  isOpenMenu: boolean;
+  setOpenMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-function Header({onCartOpen}: HeaderProps) {
+function Header({onCartOpen, setOpenMenu, isOpenMenu}: HeaderProps) {
   const cartAllPrice = useAppSelector(state => state.cartReducer);
   const cartPrice = cartAllPrice.reduce(
     (prev, nex): {price: number} => ({price: prev.price + nex.price}),
@@ -67,45 +69,27 @@ function Header({onCartOpen}: HeaderProps) {
           </NavLink>
         </li>
         <li className="list-group-item">
-          <img
-            width={18}
-            height={18}
-            src="/img/user.svg"
-            alt="logo"
-            className="me-2"
-          />
-          <span className="text-muted fs-6">Профиль</span>
+          <NavLink
+            to="/profile"
+            className={({isActive}) =>
+              isActive
+                ? `link-underline link-underline-opacity-0 p-1 ${styles.active}`
+                : 'link-underline link-underline-opacity-0 p-1'
+            }
+          >
+            <img
+              width={18}
+              height={18}
+              src="/img/user.svg"
+              alt="logo"
+              className="me-2"
+            />
+            <span className="text-muted fs-6">Профиль</span>
+          </NavLink>
         </li>
       </ul>
-      <div className={`${styles.hamburgerMenu}`}>
-        <input id={`${styles.menuToggle}`} type="checkbox" />
-        <label className={`${styles.menuBtn}`}>
-          <span></span>
-        </label>
-
-        <ul className={`${styles.menuBox}`}>
-          <li>
-            <Link
-              to="/"
-              className={`${styles.menuItem} link-underline link-underline-opacity-0`}
-            >
-              Главная
-            </Link>
-          </li>
-          <li>
-            <span className={`${styles.menuItem}`} onClick={onCartOpen}>
-              Корзина
-            </span>
-          </li>
-          <li>
-            <Link
-              to="/Favorites"
-              className={`${styles.menuItem} link-underline link-underline-opacity-0`}
-            >
-              Избранные
-            </Link>
-          </li>
-        </ul>
+      <div className={`${styles.hMenuBtn} p-0`}>
+        <Hamburger color="#8ED6FF" toggled={isOpenMenu} toggle={setOpenMenu} />
       </div>
     </header>
   );

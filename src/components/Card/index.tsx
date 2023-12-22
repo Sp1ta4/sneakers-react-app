@@ -57,7 +57,7 @@ function Card({item, loading}: SneakersProps) {
           <rect x="118" y="153" rx="8" ry="8" width="32" height="32" />
         </ContentLoader>
       ) : (
-        <div className={`${styles.itemCard} pt-3 ps-4 pe-4 pb-4`} key={item.id}>
+        <div className={`${styles.itemCard} pt-3 ps-4 pe-4`} key={item.id}>
           <img
             src={isFavorite ? '/img/hearthActive.svg' : '/img/hearth.svg'}
             alt="hearth"
@@ -71,7 +71,7 @@ function Card({item, loading}: SneakersProps) {
             alt="sneakers"
             width={133}
             height={112}
-            className={`mb-3 ${styles.sneakersImage}`}
+            className={`mb-3 ${styles.sneakersImage} ms-3`}
           />
           <p className={`${styles.nameOfItem} fw-normal`}>{item.title}</p>
           <div className="d-flex justify-content-between align-items-center">
