@@ -80,6 +80,54 @@ const initialState: allItemsState[] = [
     price: 12999,
     image: '/img/sneakers/sneakers-6.jpg',
   },
+  {
+    id: '13',
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
+    price: 12999,
+    image: '/img/sneakers/sneakers-3.jpg',
+  },
+  {
+    id: '14',
+    title: 'Мужские Кроссовки Nike Air Max 270',
+    price: 12999,
+    image: '/img/sneakers/sneakers-1.jpg',
+  },
+  {
+    id: '15',
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
+    price: 8499,
+    image: '/img/sneakers/sneakers-2.jpg',
+  },
+  {
+    id: '16',
+    title: 'Кроссовки Puma X Aka Boku Future Rider',
+    price: 8999,
+    image: '/img/sneakers/sneakers-4.jpg',
+  },
+  {
+    id: '17',
+    title: 'Мужские Кроссовки Under Armour Curry 8',
+    price: 15199,
+    image: '/img/sneakers/sneakers-5.jpg',
+  },
+  {
+    id: '18',
+    title: 'Мужские Кроссовки Nike Kyrie 7',
+    price: 11299,
+    image: '/img/sneakers/sneakers-10.jpg',
+  },
+  {
+    id: '19',
+    title: 'Мужские Кроссовки Jordan Air Jordan 11',
+    price: 10799,
+    image: '/img/sneakers/sneakers-9.jpg',
+  },
+  {
+    id: '20',
+    title: 'Мужские Кроссовки Nike LeBron XVIII',
+    price: 16499,
+    image: '/img/sneakers/sneakers-8.jpg',
+  },
 ];
 
 export const allItemsSlice = createSlice({

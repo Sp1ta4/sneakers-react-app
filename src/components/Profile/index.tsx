@@ -19,32 +19,51 @@ function Profile() {
         </Link>
         <h1 className="fs-2 fw-bold mb-0 ms-2">Мой профиль</h1>
       </div>
-      <div className={`${styles.mainProfile} d-grid`}>
-        {data.map((elem, index) => (
-          <div
-            className={`${styles.item} rounded border p-3 d-flex flex-column justify-content-between`}
-            key={index}
-          >
-            <div className={`d-flex ${styles.imagesDiv} overflow-hidden`}>
-              {elem.map(item => {
-                price += item.price;
-                return (
-                  <img
-                    className="ms-2"
-                    src={item.image}
-                    key={item.id}
-                    alt="sneakers"
-                    width={38}
-                    height={32}
-                  />
-                );
-              })}
+
+      {data.length ? (
+        <div className={`${styles.mainProfile} d-grid`}>
+          {data.map((elem, index) => (
+            <div
+              className={`${styles.item} rounded border p-3 d-flex flex-column justify-content-between`}
+              key={index}
+            >
+              <div className={`d-flex ${styles.imagesDiv} overflow-hidden`}>
+                {elem.map(item => {
+                  price += item.price;
+                  return (
+                    <img
+                      className="ms-2"
+                      src={item.image}
+                      key={item.id}
+                      alt="sneakers"
+                      width={38}
+                      height={32}
+                    />
+                  );
+                })}
+              </div>
+              <span className="fs-5 fw-bold">Заказ №{index + 1}</span>
+              <span className="fs-5 fw-bold">{price} руб.</span>
             </div>
-            <span className="fs-5 fw-bold">Заказ №{index + 1}</span>
-            <span className="fs-5 fw-bold">{price} руб.</span>
+          ))}
+        </div>
+      ) : (
+        <>
+          <div
+            className={`${styles.emptyProfile} d-flex flex-column text-center justify-content-center align-items-center`}
+          >
+            <img
+              src="/img/empty-profile.png"
+              alt="sad"
+              className="mb-4"
+              width={70}
+              height={70}
+            />
+            <h3 className="fw-bold">У вас нет заказов</h3>
+            <p className="text-muted">Оформите хотя бы один заказ</p>
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </div>
   );
 }

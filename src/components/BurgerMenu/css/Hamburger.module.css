@@ -1,4 +1,5 @@
 .hamburgerMenu {
+  font-family: "Inter", sans-serif !important;
   display: none;
   left: 0%;
   top: 0%;
@@ -28,6 +29,14 @@
   list-style: none;
   background-color: #b4e3ff;
   box-shadow: 1px 1px 14px rgba(0, 0, 0, 0.3);
+}
+.hamburgerMenu .menuBox .hamburgerFavoriteCount {
+  width: 24px;
+  height: 24px;
+  background-color: #da2b2b;
+  font-size: 1rem;
+  border-radius: 50%;
+  color: #fff;
 }
 .hamburgerMenu .menuItem {
   display: block;

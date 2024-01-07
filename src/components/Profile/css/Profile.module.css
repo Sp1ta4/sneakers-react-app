@@ -1,0 +1,22 @@
+@media screen and (max-width: 767px) {
+  .contentHeader {
+    margin-top: 3vh;
+    margin-left: 3vw;
+  }
+}
+
+.mainProfile {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+}
+.mainProfile .item {
+  overflow: hidden;
+  width: 280px;
+  height: 170px;
+}
+
+.emptyProfile {
+  min-height: 175px !important;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}/*# sourceMappingURL=Profile.module.css.map */

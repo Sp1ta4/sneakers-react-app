@@ -15,6 +15,8 @@ function Header({onCartOpen, setOpenMenu, isOpenMenu}: HeaderProps) {
     (prev, nex): {price: number} => ({price: prev.price + nex.price}),
     {price: 0},
   );
+  const favoriteItems = useAppSelector(state => state.favoriteReducer);
+  const cartItems = useAppSelector(state => state.cartReducer);
   return (
     <header className="d-flex justify-content-between align-items-center">
       <Link to="/" className="link-underline link-underline-opacity-0">
@@ -39,17 +41,29 @@ function Header({onCartOpen, setOpenMenu, isOpenMenu}: HeaderProps) {
       <ul
         className={`${styles.headerRight} d-flex justify-content-between align-items-center`}
       >
-        <li className="list-group-item me-4 btn" onClick={onCartOpen}>
-          <img
-            width={18}
-            height={18}
-            src="/img/cart.svg"
-            alt="cart"
-            className="me-2"
-          />
+        <li
+          className="list-group-item me-4 btn d-flex justify-content-between align-items-center"
+          onClick={onCartOpen}
+        >
+          <div className="d-flex justify-content-between align-items-center">
+            <img
+              width={18}
+              height={18}
+              src="/img/cart.svg"
+              alt="cart"
+              className="me-2"
+            />
+            {cartItems.length ? (
+              <div
+                className={`${styles.cartCount} favoriteCount position-absolute d-flex justify-content-center align-items-center`}
+              >
+                <span>{cartItems.length}</span>
+              </div>
+            ) : null}
+          </div>
           <span className="text-muted fs-6">{cartPrice.price} руб.</span>
         </li>
-        <li className="list-group-item me-4">
+        <li className="list-group-item me-4 position-relative">
           <NavLink
             to="/Favorites"
             className={({isActive}) =>
@@ -65,6 +79,13 @@ function Header({onCartOpen, setOpenMenu, isOpenMenu}: HeaderProps) {
               alt="cart"
               className="me-2"
             />
+            {favoriteItems.length ? (
+              <div
+                className={`${styles.favoriteCount} favoriteCount position-absolute d-flex justify-content-center align-items-center`}
+              >
+                <span>{favoriteItems.length}</span>
+              </div>
+            ) : null}
             <span className="text-muted fs-6">Закладки</span>
           </NavLink>
         </li>
