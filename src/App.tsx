@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Favorites from './components/Favorites';
 import HamburgerMenu from './components/BurgerMenu';
 import Profile from './components/Profile';
+import Order from './components/Order/';
 
 function App() {
   const [isCartOpened, setIsCartOpened] = useState(false);
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Favorites" element={<Favorites />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="Profile/Orders/:id" element={<Order />} />
       </Routes>
     </div>
   );

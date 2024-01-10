@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import Card from '../Card';
 import {ObjProps} from '../../ObjProps';
 import {useAppSelector} from '../../hook';
-// import Pagination from '../Pagination/Pagination';
 import {allItemsState} from '../../store/allItemsSlice';
 import {Pagination} from '@mui/material';
 
@@ -16,7 +15,6 @@ const Sneakers = ({searchValue}: {searchValue: string}) => {
   useEffect(() => setPageItems(itemsArray.slice(start, end)), [currentPage]);
 
   const paginate = (pageNumber: number) => {
-    console.log('lox');
     setCurrentPage(pageNumber);
   };
   return (

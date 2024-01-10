@@ -1,0 +1,28 @@
+$bg-col: #E7F6FF
+$trans: all .2s ease
+$scrollBg: #8ed6ff
+$breakpoint_xxl: 1200px
+$breakpoint_xl: 1024px
+$breakpoint_lg: 938px
+$breakpoint_md: 767px
+$breakpoint_sm: 576px
+$breakpoint_sm: 576px
+$breakpoint_min: 480px
+.sneakers
+  gap: 40px
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  @media screen and (max-width: $breakpoint_xxl)
+    grid-template-columns: 1fr 1fr 1fr
+    gap: 35px 62px
+  @media screen and (max-width: $breakpoint_xl)
+    gap: 35px 55px
+  @media screen and (max-width: $breakpoint_lg)
+    gap: 35px 15px
+  @media screen and (max-width: $breakpoint_md)
+    grid-template-columns: 1fr 1fr
+    gap: 3rem
+  @media screen and (max-width: $breakpoint_sm)
+    gap: 10px
+  @media screen and (max-width: $breakpoint_min)
+    justify-items: center
+    gap: 5px 0

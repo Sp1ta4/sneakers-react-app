@@ -91,7 +91,7 @@ function Header({onCartOpen, setOpenMenu, isOpenMenu}: HeaderProps) {
         </li>
         <li className="list-group-item">
           <NavLink
-            to="/profile"
+            to="/Profile"
             className={({isActive}) =>
               isActive
                 ? `link-underline link-underline-opacity-0 p-1 ${styles.active}`

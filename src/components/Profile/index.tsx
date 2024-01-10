@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import styles from './Profile.module.sass';
 import {useAppSelector} from '../../hook';
 import {ObjProps} from '../../ObjProps';
+import {SlOptions} from 'react-icons/sl';
 
 function Profile() {
   let price: number = 0;
@@ -23,28 +24,44 @@ function Profile() {
       {data.length ? (
         <div className={`${styles.mainProfile} d-grid`}>
           {data.map((elem, index) => (
-            <div
-              className={`${styles.item} rounded border p-3 d-flex flex-column justify-content-between`}
+            <Link
+              to={`/Profile/Orders/${index + 1}`}
               key={index}
+              className="link-underline link-underline-opacity-0 text-black"
             >
-              <div className={`d-flex ${styles.imagesDiv} overflow-hidden`}>
-                {elem.map(item => {
-                  price += item.price;
-                  return (
-                    <img
-                      className="ms-2"
-                      src={item.image}
-                      key={item.id}
-                      alt="sneakers"
-                      width={38}
-                      height={32}
-                    />
-                  );
-                })}
+              <div
+                className={`${styles.item} border p-3 d-flex flex-column justify-content-between cursor-pointer`}
+              >
+                <div className={`d-flex ${styles.imagesDiv} overflow-hidden`}>
+                  {elem.map((item, index) => {
+                    price += item.price;
+                    return index < 3 ? (
+                      <img
+                        className={`${index && 'ms-2'}`}
+                        src={item.image}
+                        key={item.id}
+                        alt="sneakers"
+                        width={58}
+                        height={52}
+                      />
+                    ) : (
+                      index === 3 && (
+                        <div
+                          className="d-flex ms-3 h-100 align-items-end"
+                          key={elem.length + 1}
+                        >
+                          <SlOptions />
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+                <div className="d-flex flex-column">
+                  <span className="fs-6 fw-bold">Заказ №{index + 1}</span>
+                  <span className="fs-5 fw-bold">{price} руб.</span>
+                </div>
               </div>
-              <span className="fs-5 fw-bold">Заказ №{index + 1}</span>
-              <span className="fs-5 fw-bold">{price} руб.</span>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (
